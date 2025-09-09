@@ -8,7 +8,7 @@ import rehypeKatex from 'rehype-katex';
 
 const config: Config = {
   title: 'SandwichScan',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Turn unseen attacks into visible costs.',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -89,7 +89,7 @@ const config: Config = {
           items: [
             {
               label: 'What is Sandwich Attack?',
-              to: '/docs/what-is-sandwich-attack/sandwich-attack',
+              to: '/docs/what-is-sandwich-attacks/sandwich-attack',
             },
           ],
         },
@@ -103,7 +103,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Baltoon, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

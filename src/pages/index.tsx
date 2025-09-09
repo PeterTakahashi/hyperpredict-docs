@@ -21,7 +21,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/what-is-sandwich-attack/sandwich-attack">
-            Docusaurus Docs - 5min ⏱️
+            See App
           </Link>
         </div>
       </div>
@@ -33,8 +33,8 @@ export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={siteConfig.title}
+      description="SandwichScan: Turn unseen attacks into visible costs. Detect and analyze sandwich attacks on Ethereum and EVM-compatible blockchains.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
