@@ -1,0 +1,8 @@
+{
+  "label": "背景",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "提供理解三明治攻击所需的前置知识；若已掌握，可跳过本节。"
+  }
+}
