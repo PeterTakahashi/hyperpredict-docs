@@ -1,0 +1,8 @@
+{
+  "label": "¿Qué es un ataque sandwich?",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Explica qué son los ataques sandwich, por qué importan y posibles soluciones."
+  }
+}

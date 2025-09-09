@@ -1,0 +1,8 @@
+{
+  "label": "Contexto",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Conocimientos previos para entender los ataques sandwich. Si ya los conoces, puedes saltar esta sección."
+  }
+}

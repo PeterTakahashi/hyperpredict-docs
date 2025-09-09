@@ -1,0 +1,8 @@
+{
+  "label": "Contramedidas actuales",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Presenta las contramedidas actuales frente a ataques sandwich."
+  }
+}
