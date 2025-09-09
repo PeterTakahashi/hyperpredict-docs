@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Impact
+# 影響
 
 ## DeFi利用者が感じる不利益
 
