@@ -6,6 +6,8 @@ sidebar_position: 1
 
 Flashbotsは、MEV（最大抽出可能価値）問題に対処するために設計された、トランザクションの順序制御とプライベート送信を実現する仕組みです。MEV-BoostやProtect RPCなどの機能を通じて、フロントランやサンドイッチ攻撃のリスク軽減を目指しますが、根本的な攻撃排除には至っていません。
 
+official website: https://www.flashbots.net/
+
 ## 仕組み
 ### 起源と目的
   2020年11月に「Flashbots: Frontrunning the MEV crisis」という宣言が公開され、実装は2021年1月に *Flashbots Auction*（mev-geth＋リレー）がローンチされた。目的は、公開メンプール起因のフロントランやサンドイッチなどのMEV外部性を“オークション”で調停・可視化することだった。  
@@ -47,9 +49,9 @@ Flashbotsは、MEV（最大抽出可能価値）問題に対処するために�
 
 ## 財務情報（2025年時点）
 
-- **推定年商**： 約 350万ドル／年（約 4.7億円） [oai_citation:0‡Growjo](https://growjo.com/company/Flashbots?utm_source=chatgpt.com)  
-- **資金調達総額**： 約 6,000万ドル（シリーズB：2023年7月21日、Paradigm主導） [oai_citation:1‡Tracxn](https://tracxn.com/d/companies/flashbots/__YfTCmThKYRZR9LpAP8fgvvFJ3D-HVQWLLlQdVpkUJSY?utm_source=chatgpt.com) [oai_citation:2‡The Block](https://www.theblock.co/post/241327/flashbots-becomes-unicorn-after-completing-60-million-raise?utm_source=chatgpt.com)  
-- **評価額（バリュエーション）**： 約 10億ドル（2023年時点） [oai_citation:3‡Growjo](https://growjo.com/company/Flashbots?utm_source=chatgpt.com) [oai_citation:4‡Tracxn](https://tracxn.com/d/companies/flashbots/__YfTCmThKYRZR9LpAP8fgvvFJ3D-HVQWLLlQdVpkUJSY?utm_source=chatgpt.com)  
+- **推定年商**： 約 350万ドル／年（約 4.7億円） [by Growjo](https://growjo.com/company/Flashbots?utm_source=chatgpt.com)  
+- **資金調達総額**： 約 6,000万ドル（シリーズB：2023年7月21日、Paradigm主導） [by Tracxn](https://tracxn.com/d/companies/flashbots/__YfTCmThKYRZR9LpAP8fgvvFJ3D-HVQWLLlQdVpkUJSY?utm_source=chatgpt.com) [by The Block](https://www.theblock.co/post/241327/flashbots-becomes-unicorn-after-completing-60-million-raise?utm_source=chatgpt.com)  
+- **評価額（バリュエーション）**： 約 10億ドル（2023年時点） [by Growjo](https://growjo.com/company/Flashbots?utm_source=chatgpt.com) [by Tracxn](https://tracxn.com/d/companies/flashbots/__YfTCmThKYRZR9LpAP8fgvvFJ3D-HVQWLLlQdVpkUJSY?utm_source=chatgpt.com)  
 
 
 ## まとめ
