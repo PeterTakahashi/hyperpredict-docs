@@ -1,0 +1,8 @@
+{
+  "label": "Current Countermeasures",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "現状のサンドイッチ攻撃に対する対策を紹介します。"
+  }
+}
