@@ -46,7 +46,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           remarkPlugins: [remarkMath],
           rehypePlugins: [
-            [rehypeKatex, { output: 'mathml' }], // ← HTMLを出さずMathMLのみ
+            [rehypeKatex, { output: 'mathml' }],
           ],
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
@@ -72,7 +72,7 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Docs',
+          label: 'What is Sandwich Attack?',
         },
         {
           href: 'https://github.com/facebook/docusaurus',
@@ -88,8 +88,8 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Docs',
-              to: '/docs/sandwich-attack',
+              label: 'What is Sandwich Attack?',
+              to: '/docs/what-is-sandwich-attack/sandwich-attack',
             },
           ],
         },
