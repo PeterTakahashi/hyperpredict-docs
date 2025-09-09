@@ -89,7 +89,7 @@ const config: Config = {
           items: [
             {
               label: 'What is Sandwich Attack?',
-              to: '/docs/what-is-sandwich-attacks/sandwich-attack',
+              to: '/docs/what-is-sandwich-attacks/overview',
             },
           ],
         },
