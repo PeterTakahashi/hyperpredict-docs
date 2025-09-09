@@ -2,13 +2,13 @@
 sidebar_position: 2
 ---
 
-# 可視化ツール
+# Visualization Tools
 
-サンドイッチ攻撃の可視化ツールを使うことで、どのDeFiのtoken swapで起きやすいのか見て、危険なswapは避けることができる。
+Visualization tools for sandwich attacks help identify which DeFi token swaps are most frequently targeted so users can avoid risky swaps.
 
-## Dune - @hildobby/MEV Sandwich Trades
+## Dune – @hildobby/MEV Sandwich Trades
 
-どのトークンペアでサンドイッチ攻撃が起きやすいのかグラフやテーブルで見ることができる。
+Shows graphs and tables of which token pairs are most often affected.
 
 url: https://dune.com/hildobby/sandwiches
 
@@ -17,7 +17,7 @@ url: https://dune.com/hildobby/sandwiches
 
 ## Eigenphi
 
-攻撃者の利益、被害者の損失額などが見やすい
+Clear visualization of attacker profits and victim losses.
 
 url: https://eigenphi.io
 

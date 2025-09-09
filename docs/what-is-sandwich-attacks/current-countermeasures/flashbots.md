@@ -4,55 +4,55 @@ sidebar_position: 1
 
 # Flashbots
 
-Flashbotsは、MEV（最大抽出可能価値）問題に対処するために設計された、トランザクションの順序制御とプライベート送信を実現する仕組みです。MEV-BoostやProtect RPCなどの機能を通じて、フロントランやサンドイッチ攻撃のリスク軽減を目指しますが、根本的な攻撃排除には至っていません。
+Flashbots is an approach to MEV (Maximal Extractable Value) that provides transaction ordering markets and private submission. Via MEV‑Boost and Protect RPC, it aims to reduce the risk of frontrunning and sandwich attacks, though it does not eliminate them entirely.
 
 official website: https://www.flashbots.net/
 
-## 仕組み
-### 起源と目的
-  2020年11月に「Flashbots: Frontrunning the MEV crisis」という宣言が公開され、実装は2021年1月に *Flashbots Auction*（mev-geth＋リレー）がローンチされた。目的は、公開メンプール起因のフロントランやサンドイッチなどのMEV外部性を“オークション”で調停・可視化することだった。  
+## How it works
+### Origins and purpose
+  In Nov 2020 the manifesto “Flashbots: Frontrunning the MEV crisis” was published, followed in Jan 2021 by the launch of Flashbots Auction (mev‑geth + relays). The goal was to mediate and make visible mempool‑driven MEV externalities (frontruns, sandwiches) via an “auction.”  
 
-### PBS（提案者‐ビルダー分離）と MEV-Boost
-  PoS移行（The Merge：2022年9月15日）後、バリデータは **MEV-Boost** を走らせ、ビルダーが組んだ複数の候補ブロックを競争入札で受け取る。最も高い入札を選ぶことで、バリデータは収益最大化、サーチャーは順序保証付きの**バンドル**をビルダーへ送信できる。  
+### PBS (Proposer‑Builder Separation) and MEV‑Boost
+  After the PoS transition (The Merge: 2022‑09‑15), validators run MEV‑Boost and receive candidate blocks from builders via competitive bidding. By selecting the highest bid, validators maximize revenue and searchers can send order‑guaranteed bundles to builders.  
 
-### Protect（プライベート送信
-  エンドユーザー向けには **Flashbots Protect RPC** が提供され、Txは公開メンプールに拡散されず、プライベートメンプールへ直接送信されるため、前出し観測を避けられる。  
+### Protect (private submission)
+  For end users, Flashbots Protect RPC enables sending transactions directly to a private mempool instead of broadcasting to the public mempool, avoiding early exposure.  
 
-### 支払い（コインベース転送／ブロック支払い）
-  サーチャーはバンドル内で **coinbase転送** を仕込み、バリデータやビルダーに対する対価（ブライブ）を組み込む。PoS以降も「ブロック提案者への追加支払い」として継続している。  
+### Payments (coinbase transfers / block payments)
+  Searchers include a coinbase transfer in their bundle, embedding payment (bribes) to validators/builders. After PoS, this continues as “additional payment to the block proposer.”  
 
-## 守れる範囲と限界
+## Coverage and limits
 
-### 守れる範囲
-  - 公開メンプール経由の先回りを抑止（Protect経由で送信）。  
-  - バリデータはMEV-Boostを通じて収益最大化でき、ブロック組成の競争が透明化。  
+### What it protects
+  - Reduces public‑mempool frontruns by sending via Protect.  
+  - Makes block construction competition more transparent while improving validator revenue.  
 
-### 限界
-  - サンドイッチ攻撃そのものを禁止・無効化する仕組みではない。  
-  - Protectを使わないTxは依然攻撃対象。  
-  - リレー／ビルダー依存により、検閲や障害のリスクが生じる。  
+### Limitations
+  - Does not ban or invalidate sandwich attacks themselves.  
+  - Transactions not using Protect remain exposed.  
+  - Reliance on relays/builders introduces censorship and failure risks.  
 
-## 限界と副作用
-1. **根本的な対策にはなっていない**  
-   Flashbotsは攻撃を“市場化”したに過ぎず、攻撃の存在を排除する仕組みではない。  
-2. **賄賂とガス代競争の問題**  
-   高額支払いを含むバンドルが優先されるため、短期的に支払い競争・手数料高騰を招く。  
-3. **「普通の人のTxが処理されない」リスク**  
-   ブロック空間が高額バンドルで埋まり、一般ユーザーのTxが後回しになる副作用がある。  
+## Side effects
+1. Not a root‑cause fix  
+   Flashbots “markets” the attack surface rather than eliminating it.  
+2. Bribe and gas‑fee races  
+   Bundles with higher payments get priority, which can escalate fees in the short term.  
+3. Risk that ordinary users get crowded out  
+   High‑paying bundles may occupy blockspace and push normal user transactions back.  
 
-## RPCの中央集権化問題
-- Protect RPC利用は有効だが、**少数のリレー／ビルダーに集中**しやすく、単一障害点や規制対応による検閲のリスクを伴う。  
-- リレー／ビルダーの多様化や、統計の透明化が今後の課題である。
-- Ethereumの90%以上のブロックがFlashbots Relay経由
-- 「誰でもValidatorになれる分散システム」が理念だったが、Flashbotsが入口を押さえている。
-- 実質的に「Ethereumの取引順序を決めるインフラ」が1社に集中。
+## Centralization concerns around RPC/relays
+- Protect RPC helps, but reliance can concentrate on a few relays/builders, creating single points of failure and potential regulatory censorship.  
+- Greater diversity and transparency around relays/builders remains an open need.
+- Over 90% of Ethereum blocks have routed via Flashbots relays at times.
+- While “anyone can be a validator” is the ethos, Flashbots controls a key ingress path.
+- Practically, the infrastructure deciding transaction order can centralize.
 
-## 財務情報（2025年時点）
+## Financials (as of 2025, third‑party estimates)
 
-- **推定年商**： 約 350万ドル／年（約 4.7億円） [by Growjo](https://growjo.com/company/Flashbots?utm_source=chatgpt.com)  
-- **資金調達総額**： 約 6,000万ドル（シリーズB：2023年7月21日、Paradigm主導） [by Tracxn](https://tracxn.com/d/companies/flashbots/__YfTCmThKYRZR9LpAP8fgvvFJ3D-HVQWLLlQdVpkUJSY?utm_source=chatgpt.com) [by The Block](https://www.theblock.co/post/241327/flashbots-becomes-unicorn-after-completing-60-million-raise?utm_source=chatgpt.com)  
-- **評価額（バリュエーション）**： 約 10億ドル（2023年時点） [by Growjo](https://growjo.com/company/Flashbots?utm_source=chatgpt.com) [by Tracxn](https://tracxn.com/d/companies/flashbots/__YfTCmThKYRZR9LpAP8fgvvFJ3D-HVQWLLlQdVpkUJSY?utm_source=chatgpt.com)  
+- Estimated annual revenue: ~$3.5M [Growjo]
+- Total funding: ~$60M (Series B on 2023‑07‑21, led by Paradigm) [Tracxn, The Block]
+- Valuation: ~$1B (circa 2023) [Growjo, Tracxn]
 
 
-## まとめ
-Flashbotsは「順序の市場化」と「プライベート送信」で被害を軽減できるが、攻撃そのものを根絶する仕組みではない。むしろ高額バンドル集中やリレー依存といった新たなリスクも生む。なのでサンドイッチ攻撃を減らすには、解決策が必要である。
+## Summary
+Flashbots reduces harm via ordering markets and private submission, but it does not eradicate sandwich attacks and can introduce new risks (e.g., high‑paying bundle concentration, relay dependence). Additional solutions are necessary to materially reduce sandwich attacks.

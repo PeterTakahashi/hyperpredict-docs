@@ -4,21 +4,19 @@ sidebar_position: 4
 
 # Impact
 
-## DeFi利用者が感じる不利益
+## User harm in DeFi
 
-### 予期せぬコスト増加
-サンドイッチ攻撃によってスリッページが拡大し、ユーザーは本来よりも不利な価格でトークンを交換させられる。
+### Unexpected cost increase
+Sandwich attacks amplify slippage and force users to exchange tokens at worse prices than they intended.
 
-### ガス代だけの損失
-Victim が amountOutMin を設定している場合、攻撃によって価格が許容範囲を超えると取引は revert し、ユーザーは ガス代だけを失う。
+### Gas-only losses
+If a victim sets `amountOutMin`, an attack can push the execution price beyond the tolerance so the swap reverts and the user loses only the gas fee.
 
-### 透明性の欠如による不信感
-表面上は「通常のスワップ」に見えるため、ユーザーには「なぜ価格が不利になったのか」が分からず、不透明さが利用体験を損なう。
+### Erosion of trust from lack of transparency
+Because the swap looks “normal” on the surface, users cannot tell why they received a worse price. This opacity degrades the user experience and trust.
 
+## Slower DeFi adoption (CEX regression)
+When attacks are frequent, users perceive DeFi as unfair and untrustworthy. Many prioritize stability over transparency and return to CEXs, making it harder for the DeFi user base to grow. For newcomers in particular, “losing money on the first DeFi experience” is a major barrier to industry adoption.
 
-## DeFi普及の阻害（CEX回帰）
-攻撃が頻発すると、ユーザーは「DeFiは不公平で信用できない」と感じるようになる。その結果、透明性よりも安定性を重視してCEXに戻る ユーザーが増え、DeFiの利用者基盤が拡大しにくくなる。特に新規参入者にとって「初めてのDeFi体験で損をする」ことは、業界全体の普及に大きなマイナス要因となる。
-
-
-## RWAトークン化への障害
-DeFiの将来は、暗号資産にとどまらず、株式・不動産・債券・金などの実世界資産（RWA） をオンチェーンで扱うことにある。しかし、基盤となる取引環境が攻撃に脆弱なままでは、投資家保護の観点で規制をクリアできない。機関投資家や大規模プレイヤーが参入しない。結果として、RWAの大規模な導入や「自由で分散的な金融市場」の実現は遠のいてしまう。
+## Obstacle to RWA tokenization
+The future of DeFi extends beyond crypto to real‑world assets (RWA) such as equities, real estate, bonds, and gold. But if the trading environment remains vulnerable, it will not meet investor‑protection requirements, keeping institutions and large players away. As a result, large‑scale RWA adoption and truly free, decentralized markets move further out of reach.

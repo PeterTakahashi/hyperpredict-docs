@@ -2,63 +2,63 @@
 sidebar_position: 5
 ---
 
-# Uniswap v2からv3 or v4
+# Uniswap: v2 → v3 (or v4)
 
-UniswapはAMM（Automated Market Maker）の代表的なプロトコルであり、DeFiの基盤を築いた。一方で、その設計はサンドイッチ攻撃に対して脆弱であり、Uniswap v3やv4ではこれを軽減するための改良が加えられている。
+Uniswap is a leading AMM protocol and a foundation of DeFi. However, AMMs are vulnerable to sandwich attacks. Uniswap v3 and v4 add features that can mitigate some of this risk.
 
-## v2：シンプルな定数積モデル
-### 特徴
-- **定数積公式**： `x * y = k` に基づくAMM。  
-- すべての流動性提供者は同一条件でプールに参加。  
-- 価格はスワップによる残高変動で決定される。  
+## v2: Simple constant‑product model
+### Characteristics
+- Constant‑product AMM: `x * y = k`.  
+- All LPs participate under the same pool conditions.  
+- Price moves according to reserve changes from swaps.  
 
-### 問題点
-- ユーザーの取引が**公開メンプールに現れる前提**のため、攻撃者がフロントラン→被害者→バックランという**サンドイッチ攻撃**を容易に仕掛けられる。  
-- スリッページ保護を入れても、価格変動を誘発されると不利な価格で取引を強いられる。  
-
----
-
-## v3：集中流動性とカスタム範囲
-### 改善点
-- **集中流動性**：流動性提供者が価格帯を指定でき、効率的な資本利用が可能。  
-- **複数プールの存在**：異なる手数料レートや価格帯が並列に存在。  
-
-### サンドイッチ攻撃に関する変化
-- 流動性が特定レンジに集中することで、**小規模な価格変動でも大きなスリッページが発生**するリスクがある。  
-- 攻撃者にとっては依然として「被害者の取引を観測して先回りする」戦術が有効。  
-- v2に比べて複雑化したが、**サンドイッチ攻撃が根本的に解決されたわけではない**。  
+### Weaknesses
+- With transactions visible in the public mempool, attackers can easily run the frontrun → victim → backrun pattern.  
+- Even with slippage limits, induced price moves can still force worse execution.  
 
 ---
 
-## v4：Hooksとカスタマイズ性
-### 新機能「Hooks」
-- v4では「フック（Hooks）」と呼ばれる拡張ポイントを導入。  
-- スワップの前後に**カスタムロジック**を差し込むことが可能に。  
-- 例：
-  - **オンチェーン注文帳（オーダーブック的機能）**
-  - **動的な手数料設定**
-  - **トランザクション検証の追加**  
+## v3: Concentrated liquidity and custom ranges
+### Improvements
+- Concentrated liquidity: LPs choose price ranges, improving capital efficiency.  
+- Multiple pools: different fee tiers and ranges coexist.  
 
-### サンドイッチ対策への応用
-- フックを利用して、**トランザクションの順序や条件を検証するロジック**を組み込むことで、攻撃を軽減できる。  
-- たとえば、指定スリッページを超える注文を拒否するフックや、メンプール経由を避けるプライベート送信と組み合わせる実装が可能。  
-- ただし、フックは「設計者次第」であり、**標準でサンドイッチ攻撃を無効化する仕組みではない**。  
+### With respect to sandwiches
+- Concentrating liquidity can make slippage large within a narrow band when price moves slightly.  
+- Attackers can still observe victim flow and preempt it.  
+- Complexity increased vs v2, but sandwiches are not solved by default.  
 
 ---
 
-## 移行への課題
-- 現状、Uniswapの多くのユーザーやプロジェクトは依然として**v2プールを利用**している。  
-- 理由は以下の通り：  
-  - v3以降は**流動性提供が複雑**で、単純なプール提供に比べ管理コストが高い。  
-  - 既存のDeFiプロトコルやアグリゲーターが**v2に依存**しているため、エコシステム全体の移行が進みにくい。  
-  - v4はまだ実装初期段階で、採用には時間がかかる。  
-- そのため、**依然として攻撃に脆弱なv2プールに多くの資金が滞留**している現状がある。  
+## v4: Hooks and customization
+### Hooks
+- v4 introduces “hooks,” extensibility points around swaps.  
+- Inject custom logic before/after a swap.  
+- Examples:
+  - On‑chain order‑book‑like behavior
+  - Dynamic fee setting
+  - Additional transaction validations  
+
+### Applying hooks to mitigate sandwiches
+- Hooks can verify conditions/order and reduce attack surface.  
+- For example, reject orders beyond specified slippage or combine with private order flow.  
+- Hooks are optional; v4 does not disable sandwiches by default.  
 
 ---
 
-## まとめ
-- **v2**：シンプルだが、サンドイッチ攻撃に最も脆弱。  
-- **v3**：資本効率は向上したが、攻撃余地は依然として残る。  
-- **v4**：Hooksによって「攻撃耐性を持つDEX」を設計できる余地が生まれたが、デフォルトでは解決していない。  
+## Migration challenges
+- Many users and protocols still rely on v2 pools.  
+- Reasons include:  
+  - v3+ liquidity management is more complex and costly.  
+  - Downstream protocols/aggregators depend on v2, slowing ecosystem migration.  
+  - v4 is early, and adoption will take time.  
+- As a result, significant capital remains in v2 pools that are more vulnerable to attack.  
 
-Uniswapの進化は、**サンドイッチ攻撃を完全に防ぐものではなく、設計者や利用者が対策を組み込める柔軟性を提供する方向**に進んでいると言える。
+---
+
+## Summary
+- v2: simplest and most vulnerable to sandwiches.  
+- v3: better capital efficiency, but attack surface remains.  
+- v4: hooks enable designing more attack‑resistant DEXs, but not by default.  
+
+Uniswap’s evolution does not completely prevent sandwiches; instead it provides flexibility for designers and users to incorporate mitigations.

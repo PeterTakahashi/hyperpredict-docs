@@ -2,37 +2,32 @@
 sidebar_position: 1
 ---
 
-# サンドイッチ攻撃の被害者向け保険
+# Insurance for sandwich‑attack victims
 
-サンドイッチ攻撃は、AMMを利用したDeFi取引において最も一般的な被害のひとつである。  
-ユーザーがスワップを実行しようとすると、攻撃者がフロントラン・バックランを仕掛け、結果的にユーザーは本来より不利な価格でトークンを交換させられる。  
-この攻撃はユーザーにとって「予測不能な追加コスト」として現れ、ガス代と価格差損失を合わせると大きな負担になる場合がある。
+Sandwich attacks are among the most common harms in AMM‑based DeFi. When a user attempts a swap, attackers frontrun and backrun, forcing a worse execution price. This appears to users as an unpredictable extra cost; combined with gas, the loss can be substantial.
 
-## アイディアの概要
-- DeFi利用者向けに「サンドイッチ攻撃保険」を提供する。  
-- ユーザーはあらかじめ少額の保険料（プレミアム）を支払い、取引ごと、または一定期間ごとに保障を得る。  
-- 万一サンドイッチ攻撃によって不利益を受けた場合、損失の一部または全額を補償する。  
+## Idea overview
+- Offer “sandwich attack insurance” to DeFi users.  
+- Users pay a small premium up front and receive coverage per trade or over a period.  
+- If harmed by a sandwich attack, reimburse a portion or all of the loss.  
 
-## 実現の可能性
-- **オンチェーン検出**  
-  ブロックチェーンのトランザクションログから、サンドイッチ攻撃の典型的なパターン（フロントラン＋被害者Tx＋バックラン）を自動的に識別可能。  
-- **自動支払い**  
-  攻撃が検出されれば、スマートコントラクトが被害者ウォレットに直接補償を送金する仕組みを構築できる。  
-- **プレミアム設計**  
-  被害の発生頻度や平均損失を基に保険料を設計し、持続可能な仕組みとすることが可能。  
+## Feasibility
+- On‑chain detection  
+  Identify the characteristic pattern (frontrun + victim tx + backrun) from on‑chain logs.  
+- Automated payouts  
+  Upon detection, a smart contract sends compensation directly to the victim’s wallet.  
+- Premium design  
+  Price premiums based on incident frequency and average losses to sustain the pool.  
 
-## 利用者にとってのメリット
-- DeFi利用に伴う心理的リスクを軽減し、より安心してスワップ取引ができる。  
-- 高頻度に取引するユーザーや、大口の取引を行うユーザーにとって特に有効。  
-- プロジェクトやウォレットに統合すれば、UX向上の一環として付加価値を提供できる。  
+## User benefits
+- Reduces psychological risk and enables safer swaps.  
+- Especially useful for high‑frequency or large‑size traders.  
+- Integration into projects/wallets adds UX value.  
 
-## 課題
-- サンドイッチ攻撃かどうかをオンチェーンで**正確に判定**するためのアルゴリズムが必要。  
-- 保険ファンドの運用方法（プレミアム収入と支払いバランス）を安定化させる必要がある。  
-- 攻撃が多発する状況では、保険の持続可能性が課題となる。  
+## Challenges
+- Accurate on‑chain classification of sandwich attacks is required.  
+- Must maintain solvency of the insurance pool (premium income vs. payouts).  
+- Sustainability is challenged during periods of high attack frequency.  
 
-## まとめ
-「サンドイッチ攻撃の被害者向け保険」は、DeFiユーザーの安心感を高める新しい金融サービスのアイディアである。  
-仕組みの設計には課題があるものの、オンチェーンでの攻撃検出や自動支払いの仕組みを組み合わせることで、実現可能な未来像を描くことができる。  
-
-この保険モデルが実装されれば、DeFi利用者は「攻撃リスクを前提とした取引」から「補償のある取引」へとシフトでき、エコシステム全体の信頼性向上に寄与する可能性がある。
+## Summary
+Insurance for sandwich‑attack victims can improve confidence for DeFi users. While design challenges exist, combining on‑chain detection with automated payouts can make it viable. This can shift users from “trading with assumed attack risk” to “trading with coverage,” improving ecosystem trust overall.

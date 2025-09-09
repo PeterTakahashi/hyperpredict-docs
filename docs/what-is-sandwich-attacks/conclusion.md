@@ -4,16 +4,14 @@ sidebar_position: 8
 
 # Conclusion
 
-サンドイッチ攻撃は単なる技術的問題ではなく、DeFiの信頼性と持続的な成長に直結する課題である。
-もし攻撃が放置されれば、ユーザーは「予期せぬ損失」や「不透明な手数料負担」を感じ、結果としてDeFiから離れCEXに回帰してしまう。
+Sandwich attacks are not just a technical issue; they are directly tied to DeFi’s credibility and sustainable growth. If left unaddressed, users will continue to suffer unexpected losses and opaque execution costs, and many will leave DeFi for CEXs.
 
-そのため、私たちはサンドイッチ攻撃を減らす取り組みを進める。これは単にユーザー保護のためだけではなく、次の2つの理由において極めて重要である。
+Reducing sandwich attacks matters not only for user protection but also for two key reasons:
 
-1. 安心して利用できる環境の整備
-誰もが透明かつ公平なルールのもとで取引できることで、DeFiの信頼性と採用が加速する。
+1. A trustworthy environment users can rely on
+Everyone should be able to trade under transparent and fair rules, accelerating trust and adoption in DeFi.
 
-2. RWAを含めた自由で分散的な市場の実現
-株式、不動産、金、債券などの実世界資産（RWA）がオンチェーンで扱われる未来を切り開くためには、攻撃の少ない健全な取引環境が不可欠である。
-
+2. Realizing free and decentralized markets, including RWAs
+To open a future where real‑world assets (RWA) like stocks, real estate, gold, and bonds are handled on-chain, we need a healthy trading environment with minimal attack surface.
 
 ![conclusion](./img/conclusion.png)

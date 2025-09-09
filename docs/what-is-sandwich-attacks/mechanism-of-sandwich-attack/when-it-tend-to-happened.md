@@ -2,29 +2,29 @@
 sidebar_position: 2
 ---
 
-# いつサンドイッチ攻撃は起きやすいのか？
-サンドイッチ攻撃 は常に発生し得るが、特に以下の条件下で顕著に起こりやすい。
+# When are sandwich attacks likely?
+Sandwich attacks can happen at any time, but are especially likely under the following conditions.
 
-## 大規模スワップ（Large Trades)
-- AMM (例: Uniswap v2) は流動性プールに基づいて価格を決定するため、取引規模が大きいほど 価格が急変動（スリッページ） する。
-- 攻撃者は、この価格変動を利用して利益を得る。
-- 例: 100 WETH を一度にスワップ → 価格が大幅に下落 → 攻撃者が先に買って後で売ることで差額を獲得。
+## Large swaps
+- In AMMs (e.g., Uniswap v2), prices depend on pool reserves, so larger trades cause larger price moves (slippage).
+- Attackers exploit this price movement to profit.
+- Example: swapping 100 WETH at once drives the price down; an attacker buys first and sells after to capture the spread.
 
-## ボラティリティの高いトークン
-- ミームコインや新規上場トークンなど、価格が急変動しやすい銘柄は狙われやすい。
-- こうしたトークンは「ユーザーが高いスリッページ許容値を設定している」ケースが多いため、攻撃者が割り込む余地が大きい。
-- 結果として、ユーザーは意図よりも大幅に不利な価格でスワップしてしまう。
+## Highly volatile tokens
+- Meme coins or freshly listed tokens with sharp price swings are frequent targets.
+- Users often set high slippage tolerances, creating room for attackers to wedge in.
+- Users end up swapping at much worse prices than intended.
 
 
-## Flashbotsを使用しないユーザーのトランザクション
-- 通常のパブリックmempoolを経由するトランザクションは、誰でも閲覧可能であり、攻撃者の標的になりやすい。
-- 一方で、Flashbots Protect や 暗号化RPC を経由すれば、トランザクションは暗号化された経路で直接Builderに送られるため、攻撃を回避しやすい。
-- しかし、Flashbotsを使わない一般ユーザーは依然として多く、攻撃が集中している。
+## Transactions not sent via Flashbots/Private RPC
+- Transactions sent through the public mempool are visible and easy targets.
+- Using Flashbots Protect or encrypted/private RPC can route directly to builders, making attacks harder.
+- Many users still do not use these paths, so attacks concentrate there.
 
-## 流動性が薄いプール
-- 流動性が少ないペアでは、わずかな注文でも価格が大きく変動する。
-- 攻撃者はこの「価格の脆弱性」を利用して、比較的小規模な取引でも効率的にサンドイッチを仕掛けることができる。
+## Thin liquidity pools
+- In pairs with little liquidity, even small orders move the price substantially.
+- Attackers exploit this fragility to sandwich efficiently even with smaller trades.
 
-## Lending ProtocolやFlash Loanの併用
-- 攻撃者はフラッシュローンやレンディングから一時的に大量の資金を調達し、実際には保有していない規模の大口スワップ を行える。
-- これにより短時間で大きな価格操作が可能になり、攻撃の効率が高まる。
+## Use of lending protocols or flash loans
+- Attackers can borrow significant capital temporarily via lending or flash loans to execute large swaps without holding the assets.
+- This enables short‑term price manipulation and increases attack efficiency.

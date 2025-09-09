@@ -2,33 +2,32 @@
 sidebar_position: 1
 ---
 
-# なぜサンドイッチ攻撃は起きるのか
+# Why do sandwich attacks happen?
 
-サンドイッチ攻撃がなぜ起きるのか解説します。
+This page explains why sandwich attacks occur.
 
-## Mempoolの公開
-- ユーザーが送信したトランザクションは、ブロックに取り込まれる前に mempool（未処理取引の待機領域） に公開される。
-- 攻撃者はmempoolを監視し、大口スワップやスリッページ幅の大きい取引を検知して、即座に攻撃取引を組み立てる。
-- この「透明性」はブロックチェーンの特徴である一方、フロントランニングの温床となる。
+## Public mempools
+- Before inclusion in a block, user transactions are visible in the mempool (pending‑transaction pool).
+- Attackers monitor the mempool, detect large swaps or wide slippage tolerances, and quickly construct attack transactions.
+- This transparency is a core blockchain feature, but also a breeding ground for frontrunning.
 
-## RPCサーバーの不正利用
-- 多くのユーザーやDAppは、RPC（Remote Procedure Call）サーバー経由でネットワークに接続している。
-- 不正なRPCサーバーは、送信されたトランザクションを傍受し、攻撃者に先出しすることが可能。
-- 一部の「無料RPC」や不透明なインフラを利用すると、トランザクション情報が漏洩し、攻撃に悪用されるリスクが高まる。
+## Abusive RPC behavior
+- Many users and dApps connect to the network via RPC servers.
+- Malicious RPCs can intercept transactions and leak them to attackers ahead of time.
+- Using some “free RPCs” or opaque infra increases the risk that order flow is leaked and abused.
 
-## Validatorによる賄賂（MEV-Boost）
-- EthereumのPoS環境では、Validatorがブロック内のトランザクション順序を決定できる。
-- Searcher（攻撃者）は、自らの取引を有利な位置に挿入してもらうため、ValidatorやBuilderに「賄賂（bribe）」を支払う。
-- MEV-Boostの仕組みでは、このような取引順序の最適化が経済合理的に競争されるため、悪意ある取引が正規のオークションとして成立してしまう。
+## Validator bribery (MEV‑Boost)
+- In Ethereum PoS, validators can determine the ordering of transactions within a block.
+- Searchers (attackers) pay validators/builders a bribe to insert their transaction at a favorable position.
+- In MEV‑Boost, this ordering optimization is competed for economically, allowing harmful sequences to be realized via a legitimate auction.
 
-## Validator自身の不正
-- Validatorは、自らブロックを構築する立場を利用し、直接サンドイッチ攻撃を行うことも可能。
-- MEV-Boostの普及により、単独Validatorが任意に不正する機会は減少したが、完全には排除できていない。
-- 特に小規模ネットワークや独自チェーンでは、Validatorの集中度が高いため、攻撃リスクが増す。
+## Misbehavior by validators
+- Validators can directly sandwich if they build blocks themselves.
+- While MEV‑Boost reduces incentives for any single validator to misbehave arbitrarily, it does not eliminate the risk entirely.
+- On small networks or appchains with concentrated validators, the risk increases.
 
-## まとめ
-- ブロックチェーンの透明性（mempool公開）
-- トランザクション処理の非対称性（順序を操作できる権限）
+## Summary
+- Blockchain transparency (public mempools)
+- Asymmetry in transaction processing (entities with ordering power)
 
-この2つが重なることで、サンドイッチ攻撃 は成立する。
-透明性はブロックチェーンの本質的な強みだが、その裏返しとして攻撃に利用されているのが現状である。
+Together these enable sandwich attacks. Transparency is a strength of blockchains, but it is also exploited for these attacks today.

@@ -5,49 +5,47 @@ sidebar_position: 3
 
 # HyperLiquid
 
-HyperLiquidは、EthereumのようなAMMベースのDeFiとは異なり、**オーダーブック型の取引所を独自チェーン上に実装**したプロジェクトである。従来のAMMで発生するサンドイッチ攻撃などのMEV問題を根本から回避できる構造を持ち、高速処理性能と低ガスコストを武器に、次世代のDeFi基盤として注目されている。
+Unlike AMM‑based DeFi on Ethereum, HyperLiquid implements a native order‑book exchange on its own chain. This structure avoids AMM‑specific MEV issues such as sandwich attacks at the root. With high throughput and low fees, it is a notable candidate for next‑generation DeFi infrastructure.
 
 official website: https://hyperfoundation.org/
 
 
-## 仕組み
-### オーダーブック方式
-- UniswapなどのAMMは定数積モデルを使い、価格は流動性プール残高に依存する。そのため、大きなスワップや先回り取引による価格操作が可能で、サンドイッチ攻撃の温床となる。  
-- 一方でHyperLiquidは**CEX同様のネイティブオーダーブック**を搭載。  
-  - 価格はプールではなく板（注文簿）によって決定される。  
-  - 取引はマッチングエンジンで処理されるため、トランザクションを並べ替えて価格差を抜く余地が小さい。  
+## How it works
+### Order‑book model
+- AMMs like Uniswap use the constant‑product model; prices depend on pool reserves, so large swaps and frontruns can manipulate price and enable sandwiches.  
+- HyperLiquid, by contrast, offers a native order book similar to a CEX.  
+  - Price is set by the book, not a pool curve.  
+  - A matching engine processes trades, leaving less room for reorder‑based extraction.  
 
-### 独自L1チェーン
-- Ethereumなどの汎用チェーンではなく、**専用のPoSベースBFT合意アルゴリズム**を採用。  
-- 秒間数万件規模の処理性能を実現し、CEX並みの取引体験をオンチェーンで再現している。  
-- 手数料（ガス代）は実質的にゼロに近い。これにより、Botによる高頻度のガス競争を避けられる。  
+### Custom L1 chain
+- Uses a dedicated PoS‑based BFT consensus rather than a general‑purpose chain.  
+- Achieves tens of thousands of TPS, targeting CEX‑like on‑chain execution.  
+- Fees (gas) are near zero, which avoids bot‑driven gas wars.  
 
 ref: [HyperLiquid docs](https://hyperliquid.gitbook.io/hyperliquid-docs/hypercore/overview)
 
-### 高速性の実現要因
-- **BFT合意**：高速ファイナリティを提供し、遅延が極小。  
-- **並列処理設計**：トランザクションを並列に実行するアーキテクチャを持ち、スケーラビリティを確保。  
-- **オーダーブックとチェーンの一体化**：取引データはオンチェーンに記録されるが、オーダーブック処理がネイティブで統合されているため効率が高い。  
+### Why it’s fast
+- BFT consensus provides fast finality with minimal latency.  
+- Parallel‑execution architecture improves scalability.  
+- Tight integration of the order book with the chain improves efficiency.  
 
-## 守れる範囲と限界
+## Coverage and limits
 
-### 強み
-- AMMに固有のサンドイッチ攻撃が発生しない。  
-- ブロック内のトランザクション並び替えによるフロントラン余地が極小化。  
-- 高速処理かつ低手数料により、一般ユーザーが攻撃者に不利な立場に立たされにくい。  
+### Strengths
+- Avoids AMM‑specific sandwich mechanics.  
+- Greatly limits in‑block reordering opportunities.  
+- High throughput and low fees mean typical users are less disadvantaged vs. attackers.  
 
-### 限界
-- 依然として「清算狙いの攻撃」や「価格操作（Spoofing等）」のリスクは残る。  
-- 完全分散AMMよりは、CEX的なマッチングの中央集権性に近い懸念を持つユーザーもいる。  
-- オーダーブックの厚みが十分でない場合、スリッページは依然発生し得る。  
+### Limits
+- Risks like liquidation‑targeting and spoofing remain possible.  
+- Some may perceive more centralization vs. fully on‑chain AMMs.  
+- If books are thin, slippage can still occur.  
 
-## 将来性
-- 「オンチェーンCEX」とも呼ばれるモデルであり、AMMの弱点を克服するDeFiの次世代候補。  
-- 低ガス・高スループットを背景に、**オーダーブック形式のDeFi（例：Sei Network）**との競争をリードしている。  
-- 将来的にはデリバティブ・永続先物などCEXと同等の金融商品をフルオンチェーンで提供可能。  
-- EthereumやAMM型DEXでは実現が難しかった**公平な取引環境**を提示することで、機関投資家や高頻度取引層の参入も見込める。  
+## Outlook
+- Sometimes called an “on‑chain CEX,” it’s a next‑gen DeFi model that addresses AMM weaknesses.  
+- With low gas and high throughput, it leads competition among order‑book DeFi (e.g., Sei).  
+- Could support derivatives and perpetuals fully on‑chain.  
+- By offering a fairer trading environment than typical AMMs, it may attract institutions and HFT participants.  
 
-## まとめ
-HyperLiquidは「AMMのMEV構造的弱点を根本から取り除いたDeFi」と言える。  
-サンドイッチ攻撃に強いだけでなく、処理性能・手数料・ユーザー体験の全てをCEX水準に近づけた点が評価される。今後はオーダーブック型DeFiの代表例として、市場全体に影響を与える可能性が高い。
-
+## Summary
+HyperLiquid removes AMM‑specific MEV weaknesses at the root. Beyond resistance to sandwiching, it brings performance, fees, and UX closer to CEX standards. It is a strong candidate to shape the future of order‑book‑based DeFi.

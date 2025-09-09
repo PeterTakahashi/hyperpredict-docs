@@ -2,26 +2,25 @@
 sidebar_position: 1
 ---
 
-# EVMの基礎
+# EVM Basics
 
-Ethereum Virtual Machine (EVM) は、Ethereumをはじめとする多くのEVM互換ブロックチェーンで稼働するスマートコントラクト実行環境である。EVMの理解は、サンドイッチ攻撃の仕組みを把握する上で不可欠である。
+The Ethereum Virtual Machine (EVM) is the smart‑contract execution environment that runs on Ethereum and many EVM‑compatible blockchains. Understanding the EVM is essential to grasp how sandwich attacks work.
 
 ## Proof of Stake (PoS)
-Ethereumは現在PoSを採用しており、バリデータがトークンをステークすることでブロック生成権を得る。バリデータは、ブロックに含めるトランザクションの順序を決定できるため、MEV（Maximal Extractable Value）の発生源となる。
-EthereumのPoSでは、バリデータはステーク量に応じて確率的にブロック提案権を得る。選ばれた提案者はトランザクション順序を決められるのでサンドイッチ攻撃が発生する。ただし、全体で100万以上のバリデータが稼働しており、大規模な不正（チェーン改ざん）は極めて困難。一方で、単発のMEV抽出（サンドイッチ攻撃など）は「正当なブロック内の順序変更」として日常的に行われている。
+Ethereum currently uses PoS, where validators obtain the right to produce blocks by staking tokens. Validators can determine the order of transactions within a block, which is the source of MEV (Maximal Extractable Value).
+In Ethereum’s PoS, validators probabilistically obtain the right to propose a block in proportion to their stake. The chosen proposer can decide transaction ordering, enabling sandwich attacks. With over a million validators, large‑scale fraud (chain rewrites) is extremely difficult; however, one‑off MEV extraction (including sandwich attacks) as “legitimate in‑block reordering” is commonplace.
 
 ## Validator
-トランザクションの検証とブロック生成を担う。Validatorはmempool内の未処理トランザクションを参照し、独自の利益を得るために順序を操作することが可能である。
+Validators verify transactions and produce blocks. They can inspect pending transactions in the mempool and, in some cases, manipulate ordering to capture profit.
 
 ## Block & Transaction
-各ブロックには複数のトランザクションが含まれ、順序はブロック提案者（Validator）が決定する。この順序操作が、フロントランニングやサンドイッチ攻撃を可能にする。
+Each block contains multiple transactions, and their order is determined by the block proposer (validator). This ability to reorder enables frontrunning and sandwich attacks.
 
 ## RPC Server
-ユーザーやDAppは通常、RPC（Remote Procedure Call）サーバーを通じてネットワークに接続し、トランザクションを送信する。RPCサーバーが不正である場合、取引情報が傍受され、攻撃に利用されるリスクがある。
+Users and dApps typically connect to the network and send transactions via RPC (Remote Procedure Call) servers. If an RPC server behaves maliciously, it can intercept order flow and leak it for attacks.
 
 ## Solidity
-DeFiプロトコルの多くはSolidityで記述され、EVM上で実行される。スマートコントラクトの透明性は高い一方で、その仕組みを悪用する攻撃者にとっても行動しやすい環境を提供してしまう。
+Many DeFi protocols are written in Solidity and run on the EVM. While smart contracts are transparent, that same transparency can make it easier for attackers to understand and exploit protocol mechanics.
 
 ## Wallet
-ユーザーが秘密鍵を管理し、トランザクションの署名や送信を行うためのソフトウェアまたはハードウェア。ウォレットは資産の保管庫であると同時に、ユーザーがEthereumネットワークとやり取りするインターフェースでもある。ウォレットから送信されたトランザクションはRPCサーバーを経由してmempoolに入り、ブロックに取り込まれる。
-
+Wallets (software or hardware) manage private keys and sign/send transactions. They are both a vault for assets and the user interface to the Ethereum network. Transactions sent from a wallet enter the mempool via an RPC server and are then included in a block.

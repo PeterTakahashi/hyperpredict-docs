@@ -4,23 +4,15 @@ sidebar_position: 1
 
 # Overview
 
-サンドイッチ攻撃とは、ユーザーがAMM（Automated Market Maker）でトークンをスワップしようとする際に、攻撃者がそのトランザクションを観測し、前後に自らの取引を挟み込むことで利益を得る手法である。
-具体的には、攻撃者は被害者のトランザクションがブロックチェーンに書き込まれる前にフロントラン（先回り）で買い注文を出し、その直後に被害者が不利な価格でスワップを実行する。その後、バックラン（後追い）で売り注文を出すことで、価格差分の利益を獲得する。
-この一連の流れが「サンドイッチ」のように被害者のトランザクションを挟み込むことから、この名称がついている。
+A sandwich attack is a technique where, when a user attempts to swap tokens on an AMM (Automated Market Maker), an attacker observes the pending transaction and inserts their own trades immediately before and after it to extract profit. Concretely, the attacker places a buy in a frontrun before the victim’s transaction is included on-chain, the victim then executes the swap at a worse price, and the attacker places a sell in a backrun to capture the spread. Because the victim’s transaction is “sandwiched” between the attacker’s two trades, the pattern is called a “sandwich.”
 
 ![sandwich attack](./img/sandwich-attack.png)
 
 
-## サンドイッチ攻撃の被害
-過去の調査では、イーサリアム上だけでも累計で数十万件のサンドイッチ攻撃が発生し、攻撃者の利益は数千万ドル規模に達していると報告されている。  
-直近でも、Uniswap v3で1回のスワップから20万ドル以上が奪われるなど、単発でも甚大な損失を被るケースがある。  
-また、BNBチェーンなど他のネットワークでも同様の攻撃が繰り返されており、1日の影響取引額が数十億ドル規模にのぼることもある。  
-このように、被害は個人投資家のガス代損失から大口取引の資産流出まで多岐にわたり、DeFi全体の信頼を揺るがす深刻な問題となっている。
+## Impact of sandwich attacks
+Prior analyses report hundreds of thousands of sandwich attacks on Ethereum alone, with attackers capturing tens of millions of dollars in aggregate profit. Recently, there have been single Uniswap v3 swaps that lost more than $200,000 to a sandwich. Similar attacks are repeated on other networks such as BNB Chain, and on some days the affected trading volume reaches billions of dollars. The damage ranges from wasted gas fees for retail users to substantial capital outflows from large trades, making this a serious problem that undermines trust in DeFi.
 
-## なぜ重要な課題なのか
-サンドイッチ攻撃はユーザーにとって予期せぬコスト増をもたらし、DeFiの利用体験を大きく損なう。被害者はスリッページによる不利なレートでの交換や、場合によってはトランザクションの失敗（ガス代のみの損失）を被ることになる。
-このような攻撃が蔓延すると、ユーザーは「DeFiは不透明で不公平」という印象を持ち、結果的に中央集権型取引所（CEX）へと回帰する可能性が高い。
+## Why it matters
+Sandwich attacks impose unexpected costs on users and significantly degrade the DeFi experience. Victims end up swapping at unfavorable rates due to slippage, or in some cases their transactions revert and they lose the gas fee. If such attacks are pervasive, users come to view DeFi as opaque and unfair, and many will gravitate back to centralized exchanges (CEXs).
 
-DeFiの将来には、暗号資産だけでなく、株式・不動産・国債・社債・金などの 実世界資産（RWA: Real World Assets） をオンチェーンで扱うというビジョンがある。
-しかし、基盤となる取引環境が攻撃に脆弱なままでは、RWAのトークン化や普及は実現し得ない。
-したがって、サンドイッチ攻撃の検知と抑制は、DeFiの信頼性を高め、自由で分散的な市場を築くために不可欠な課題である。
+The future of DeFi envisions handling not only crypto assets but also real‑world assets (RWA) such as equities, real estate, government and corporate bonds, and gold, on-chain. However, if the underlying trading environment remains vulnerable to attack, RWA tokenization and adoption will not materialize. Detecting and mitigating sandwich attacks is therefore essential to increase trust in DeFi and to build free and decentralized markets.

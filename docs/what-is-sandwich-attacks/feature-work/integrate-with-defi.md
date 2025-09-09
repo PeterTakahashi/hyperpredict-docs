@@ -2,45 +2,43 @@
 sidebar_position: 2
 ---
 
-# サンドイッチ攻撃予測をDeFiと連携
+# Integrate sandwich‑attack prediction with DeFi
 
-これまでのサンドイッチ攻撃の対策は「攻撃を受けた後の補償」や「構造的に攻撃を受けにくい設計」に偏っていたが、**事前にリスクを予測して利用者に警告を出す**というアプローチも可能である。  
+Existing approaches skew toward “post‑attack compensation” or “structures less prone to attack.” A complementary approach is to predict risk beforehand and warn users.  
 
-私たちはこの発想に基づき、**サンドイッチ攻撃予測API**を提供し、Uniswapやその他のDeFiアプリケーションと連携することを構想している。
+We propose a Sandwich Attack Prediction API integrated into Uniswap and other DeFi applications.
 
-## アイディアの概要
-- ユーザーがスワップを実行する際、DeFiフロントエンドからAPIに情報を送信。  
-- APIは以下のパラメータを受け取る：  
-  - どのトークンを、いくらスワップしようとしているか  
-  - どのスマートコントラクトを通じてスワップするか  
-  - ユーザーの設定したスリッページ許容値  
-- APIはブロックチェーンのメンプール状況や市場の流動性を解析し、**サンドイッチ攻撃の発生可能性を5段階評価**で返す。  
+## Idea overview
+- When a user prepares a swap, the front‑end sends parameters to the API:  
+  - Which tokens and how much  
+  - Which smart contract/route  
+  - User’s slippage tolerance  
+- The API analyzes mempool state and market liquidity and returns a 5‑level risk score for sandwich likelihood.  
 
-## 仕組み（イメージ）
-1. ユーザーが「Swap」ボタンを押す前に、フロントエンドがAPIへ問い合わせ。  
-2. APIが危険度を返す（例：1＝安全、5＝極めて危険）。  
-3. 危険度が高い場合、UI上に**警告表示**を出し、ユーザーが再確認できる。  
+## Flow (concept)
+1. Before the user clicks “Swap,” the front‑end queries the API.  
+2. The API returns risk (e.g., 1 = safe, 5 = very risky).  
+3. If risk is high, the UI shows a warning and asks for confirmation.  
 
-例：  
-- 危険度 1〜2 → 通常通り実行  
-- 危険度 3 → 警告を表示（価格操作リスクあり）  
-- 危険度 4〜5 → 実行前に確認ダイアログを表示し、ユーザーに判断を委ねる  
+Example:  
+- Risk 1–2 → proceed normally  
+- Risk 3 → show a warning (potential price manipulation)  
+- Risk 4–5 → show a confirmation dialog before execution  
 
-## 利用者にとってのメリット
-- **予防的対策**：攻撃を受ける前にリスクを察知し、無駄な損失やガス代を回避できる。  
-- **透明性**：リスクの数値化により、DeFi初心者でも理解しやすい。  
-- **統合の容易さ**：APIを通じて既存のDeFi UIにシンプルに組み込める。  
+## User benefits
+- Preventive measure: detect risk before executing to avoid losses and wasted gas.  
+- Transparency: quantified risk is easier for newcomers to understand.  
+- Easy integration: simple to add to existing DeFi UIs via API.  
 
-## DeFiプロジェクトにとっての価値
-- ユーザー体験（UX）の向上。安心感を持って取引できる。  
-- 他のDEXやアグリゲーターとの差別化要素になる。  
-- 攻撃被害の減少により、エコシステム全体の信頼性向上に貢献。  
+## Value to DeFi projects
+- Improves UX by giving users confidence at trade time.  
+- Differentiates from other DEXs/aggregators.  
+- Reduces attack losses and improves ecosystem trust.  
 
-## 課題
-- 予測の精度をどこまで高められるかが鍵。誤検知が多いと逆効果になる。  
-- メンプールや市場状況の変化が極めて高速なため、**リアルタイム性**が要求される。  
-- プライベートメンプールやFlashbots経由の取引は外部から予測困難。  
+## Challenges
+- Prediction accuracy is critical; false positives harm UX.  
+- Mempool and market conditions change rapidly; real‑time analysis is required.  
+- Private mempools and Flashbots‑routed flow are hard to observe externally.  
 
-## まとめ
-「サンドイッチ攻撃予測API × DeFi連携」は、攻撃を**事前に回避するための新しいレイヤー**を提供する。  
-補償（保険）や構造的対策（AMM以外の設計）と並ぶ、**第三のアプローチ**として有効であり、ユーザー体験を大幅に向上させる可能性を秘めている。  
+## Summary
+“Sandwich‑attack prediction × DeFi integration” adds a proactive layer to avoid attacks. Alongside insurance and structural (non‑AMM) designs, it is a third approach that can meaningfully improve UX.
