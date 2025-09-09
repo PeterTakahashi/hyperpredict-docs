@@ -3,7 +3,9 @@ sidebar_position: 2
 ---
 
 # DeFiの基礎
-Uniswap v2やv3のロジックなどを中心にDeFiの概要を説明します。
+Uniswap v2やv3のロジックなどを中心にDeFiの概要を説明します。DeFiはEVM上にたくさん存在しますが、Uniswapが最初にAMMを発案しました。その後UniswapがforkされPancakeswapやSushiswapなどが作成されました。
+
+![uniswap](./img/uniswap.png)
 
 ## AMM（Automated Market Maker）
 AMMはオーダーブックを持たず、流動性プール に基づいて自動的に価格を決定する仕組みである。代表的な実装は Uniswap v2 であり、価格は以下の 定数積モデル によって決まる。
