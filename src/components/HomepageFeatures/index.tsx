@@ -1,33 +1,71 @@
-import type {ReactNode} from 'react';
-import clsx from 'clsx';
-import Heading from '@theme/Heading';
-import styles from './styles.module.css';
+import type { ReactNode } from "react";
+import clsx from "clsx";
+import Heading from "@theme/Heading";
+import styles from "./styles.module.css";
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  image: ReactNode;
   description: ReactNode;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: "Easy to Use",
+    image: (
+      <img
+        src={require("@site/static/img/person.png").default}
+        alt="Person"
+        style={{ width: 100 }}
+      />
+    ),
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        SandwichScan is designed to make complex blockchain data and MEV
+        analysis accessible to everyone. With just a click, you can detect and
+        visualize sandwich attacks, clearly see front-runs, back-runs, and
+        losses.
+      </>
+    ),
+  },
+  {
+    title: "Open Source",
+    image: (
+      <img
+        src={require("@site/static/img/open.png").default}
+        alt="Open Source"
+        style={{ width: 100 }}
+      />
+    ),
+    description: (
+      <>
+        SandwichScan is open source, built by the community for the community.
+        We believe in transparency and collaboration.
+      </>
+    ),
+  },
+  {
+    title: "Free to Use",
+    image: (
+      <img
+        src={require("@site/static/img/free.png").default}
+        alt="Free"
+        style={{ width: 100 }}
+      />
+    ),
+    description: (
+      <>
+        SandwichScan is completely free to use. We want to empower everyone to
+        understand and analyze blockchain transactions without any barriers.
       </>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({ title, image, description }: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
+    <div className={clsx("col col--4")}>
+      <div className="text--center">{image}</div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
