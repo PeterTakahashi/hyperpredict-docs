@@ -52,10 +52,6 @@ const config: Config = {
         theme: {
           customCss: "./src/css/custom.css",
         },
-        googleAnalytics: {
-          trackingID: "G-EYFSB6ZT0P",
-          anonymizeIP: true,
-        },
       } satisfies Preset.Options,
     ],
   ],
@@ -112,6 +108,26 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+
+  headTags: [
+    {
+      tagName: "script",
+      attributes: {
+        async: "true",
+        src: "https://www.googletagmanager.com/gtag/js?id=G-EYFSB6ZT0P",
+      },
+    },
+    {
+      tagName: "script",
+      attributes: {},
+      innerHTML: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EYFSB6ZT0P');
+      `,
+    },
+  ],
 };
 
 export default config;
