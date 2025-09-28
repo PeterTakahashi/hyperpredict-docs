@@ -24,6 +24,15 @@ https://app.sandwichscan.baltoon.jp
 sandwichscan api docs  
 https://api.sandwichscan.baltoon.jp/app/v1/scalar
 
+docs repository
+https://github.com/PeterTakahashi/sandwich-scan-docs
+
+fastapi backend api repository
+https://github.com/PeterTakahashi/sandwichscan-app-fastapi
+
+react frontend repository
+https://github.com/PeterTakahashi/sandwichscan-app-react
+
 ## Definition / detection rule
 
 A sandwich attack is detected when:
