@@ -11,7 +11,7 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: "Fast and Low-Cost",
+    title: "Predict future exactly",
     image: (
       <img
         src={require("@site/static/img/person.png").default}
@@ -21,8 +21,7 @@ const FeatureList: FeatureItem[] = [
     ),
     description: (
       <>
-        HyperPredict is built on HyperEVM and Hyperliquid, ensuring fast
-        transactions with minimal fees.
+        HyperPredict makes future predictions with high accuracy by traders
       </>
     ),
   },
