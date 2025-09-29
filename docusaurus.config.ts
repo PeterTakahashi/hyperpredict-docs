@@ -17,7 +17,7 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
+  url: "https://hyperpredict.vercel.app/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -47,7 +47,7 @@ const config: Config = {
           remarkPlugins: [remarkMath],
           rehypePlugins: [[rehypeKatex, { output: "mathml" }]],
           editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            "https://github.com/PeterTakahashi/hyperpredict-docs/edit/main/",
         },
         theme: {
           customCss: "./src/css/custom.css",
@@ -72,11 +72,6 @@ const config: Config = {
           position: "left",
           label: "Docs",
         },
-        {
-          href: "https://github.com/PeterTakahashi/HyperPredict-app-react",
-          label: "GitHub",
-          position: "right",
-        },
       ],
     },
     footer: {
@@ -88,15 +83,6 @@ const config: Config = {
             {
               label: "Docs",
               to: "/docs/category/docs",
-            },
-          ],
-        },
-        {
-          title: "More",
-          items: [
-            {
-              label: "GitHub",
-              href: "https://github.com/PeterTakahashi/HyperPredict-app-react",
             },
           ],
         },
