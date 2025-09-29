@@ -19,7 +19,10 @@ function HomepageHeader() {
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          <Link className="button button--secondary button--lg" to="/">
+          <Link
+            className="button button--secondary button--lg"
+            to="https://t.me/+7c5Zocr0enswNjBl"
+          >
             join whitelist
           </Link>
         </div>
