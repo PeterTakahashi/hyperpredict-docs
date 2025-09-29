@@ -7,8 +7,8 @@ import rehypeKatex from "rehype-katex";
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: "SandwichScan",
-  tagline: "Turn unseen attacks into visible costs.",
+  title: "HyperPredict",
+  tagline: "Prediction market on HyperEVM/Hyperliquid.",
   favicon: "img/favicon.ico",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -60,9 +60,9 @@ const config: Config = {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
-      title: "SandwichScan",
+      title: "HyperPredict",
       logo: {
-        alt: "SandwichScan Logo",
+        alt: "HyperPredict Logo",
         src: "img/logo.svg",
       },
       items: [
@@ -70,10 +70,10 @@ const config: Config = {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
           position: "left",
-          label: "What is Sandwich Attack?",
+          label: "Docs",
         },
         {
-          href: "https://github.com/PeterTakahashi/sandwichscan-app-react",
+          href: "https://github.com/PeterTakahashi/HyperPredict-app-react",
           label: "GitHub",
           position: "right",
         },
@@ -86,8 +86,8 @@ const config: Config = {
           title: "Docs",
           items: [
             {
-              label: "What is Sandwich Attack?",
-              to: "/docs/what-is-sandwich-attacks/overview",
+              label: "Docs",
+              to: "/docs/category/docs",
             },
           ],
         },
@@ -96,12 +96,12 @@ const config: Config = {
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/PeterTakahashi/sandwichscan-app-react",
+              href: "https://github.com/PeterTakahashi/HyperPredict-app-react",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Baltoon, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} HyperPredict.`,
     },
     prism: {
       theme: prismThemes.github,

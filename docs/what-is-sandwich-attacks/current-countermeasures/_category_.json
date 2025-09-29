@@ -1,8 +1,0 @@
-{
-  "label": "Current Countermeasures",
-  "position": 5,
-  "link": {
-    "type": "generated-index",
-    "description": "Introduces current countermeasures against sandwich attacks."
-  }
-}

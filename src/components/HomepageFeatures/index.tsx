@@ -11,7 +11,7 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: "Easy to Use",
+    title: "Fast and Low-Cost",
     image: (
       <img
         src={require("@site/static/img/person.png").default}
@@ -21,42 +21,8 @@ const FeatureList: FeatureItem[] = [
     ),
     description: (
       <>
-        SandwichScan is designed to make complex blockchain data and MEV
-        analysis accessible to everyone. With just a click, you can detect and
-        visualize sandwich attacks, clearly see front-runs, back-runs, and
-        losses.
-      </>
-    ),
-  },
-  {
-    title: "Open Source",
-    image: (
-      <img
-        src={require("@site/static/img/open.png").default}
-        alt="Open Source"
-        style={{ width: 100 }}
-      />
-    ),
-    description: (
-      <>
-        SandwichScan is open source, built by the community for the community.
-        We believe in transparency and collaboration.
-      </>
-    ),
-  },
-  {
-    title: "Free to Use",
-    image: (
-      <img
-        src={require("@site/static/img/free.png").default}
-        alt="Free"
-        style={{ width: 100 }}
-      />
-    ),
-    description: (
-      <>
-        SandwichScan is completely free to use. We want to empower everyone to
-        understand and analyze blockchain transactions without any barriers.
+        HyperPredict is built on HyperEVM and Hyperliquid, ensuring fast
+        transactions with minimal fees.
       </>
     ),
   },

@@ -13,16 +13,14 @@ function HomepageHeader() {
   return (
     <header className={clsx("hero hero--primary", styles.heroBanner)}>
       <div className="container">
+        <img src={"/img/logo.png"} className={styles.logo} alt="Logo" />
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="https://app.sandwichscan.baltoon.jp"
-          >
-            See App
+          <Link className="button button--secondary button--lg" to="/">
+            join whitelist
           </Link>
         </div>
       </div>
@@ -35,7 +33,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={siteConfig.title}
-      description="SandwichScan: Turn unseen attacks into visible costs. Detect and analyze sandwich attacks on Ethereum and EVM-compatible blockchains."
+      description="HyperPredict: Prediction market on HyperEVM/Hyperliquid"
     >
       <HomepageHeader />
       <main>
